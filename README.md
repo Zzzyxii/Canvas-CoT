@@ -17,7 +17,7 @@ This repository contains the core implementation of a **Visual-Reasoning Agent**
 
 <div align="center">
   <picture>
-      <img src="./assets/overview.png" width="95%">
+      <img src="./assets/overview.png" width="90%">
   </picture>
 </div>
 
