@@ -39,7 +39,8 @@ This repository contains the core implementation of a **Visual-Reasoning Agent**
 
 ```bash
 pip install openai playwright beautifulsoup4 lxml Pillow
-playwright install chromium
+playwright install chromium 
+```
 
 
 ## 📊 Experimental Results
