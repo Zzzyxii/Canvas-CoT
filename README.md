@@ -1,6 +1,17 @@
-# Visual-Reasoning Agent: Canvas-CoT Core
+<div align="center">
+  <picture>
+      <img src="./assets/logo_caption.png" width="100%">
+  </picture>
+</div>
 
-![Header Image](assets/1.png)
+<div align="center" style="line-height: 1;">
+
+[![arXiv](https://img.shields.io/badge/arXiv-2602.xxxxx-b31b1b?style=for-the-badge)]()
+[![GITHUB](https://img.shields.io/badge/Github-24292F?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zzzyxii/Canvas-CoT)
+
+</div>
+
+# Introduction
 
 This repository contains the core implementation of a **Visual-Reasoning Agent** designed to solve complex physics and mathematical problems through a synchronized **Visual Chain-of-Thought (Canvas-CoT)**. The system enables a Large Language Model (LLM) to act as an agent that "thinks" on a virtual notebook, bridging the gap between symbolic reasoning and visual representation.
 
@@ -29,3 +40,27 @@ This repository contains the core implementation of a **Visual-Reasoning Agent**
 ```bash
 pip install openai playwright beautifulsoup4 lxml Pillow
 playwright install chromium
+
+
+## 📊 Experimental Results
+
+We evaluated the **Canvas-of-thought** method against several baseline reasoning strategies (Chain-of-thought, Tree-of-thought, etc.) across multiple benchmarks. Some of the results are presented here:
+
+<div align="center">
+  <p><b>1. Performance on VCode</b></p>
+  <img src="./assets/table1.png" width="100%">
+</div>
+
+<br>
+
+<div align="center">
+  <p><b>2. Performance on RBench-V</b></p>
+  <img src="./assets/table2.png" width="100%">
+</div>
+
+<br>
+
+<div align="center">
+  <p><b>3. Performance on MathVista</b></p>
+  <img src="./assets/table3.png" width="100%">
+</div>
