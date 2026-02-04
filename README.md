@@ -15,6 +15,12 @@
 
 This repository contains the core implementation of a **Visual-Reasoning Agent** designed to solve complex physics and mathematical problems through a synchronized **Visual Chain-of-Thought (Canvas-CoT)**. The system enables a Large Language Model (LLM) to act as an agent that "thinks" on a virtual notebook, bridging the gap between symbolic reasoning and visual representation.
 
+<div align="center">
+  <picture>
+      <img src="./assets/overview.png" width="100%">
+  </picture>
+</div>
+
 ## 📂 Module Architecture
 
 | File | Description |
@@ -65,3 +71,5 @@ We evaluated the **Canvas-of-thought** method against several baseline reasoning
   <p><b>3. Performance on MathVista</b></p>
   <img src="./assets/table3.png" width="100%">
 </div>
+
+## Citation

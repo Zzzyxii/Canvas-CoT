@@ -9,7 +9,6 @@ import time
 import requests
 import io
 import uuid
-import logid
 import base64
 import json
 from typing import List, Dict, Any, Optional, Union
@@ -202,17 +201,9 @@ Extract wrong elements in the notebook state according to the original question.
 
 
 
-# 对比黑板图片和原图图片
+# compare
 CRITIQUE_PROMPT = """<tool_response><image>This is the state of notebook. Critical Check: {critical_check}</tool_response>"""
-# CRITIQUE_PROMPT = """<tool_response>
-# [Action Result] The input image is the result of tool_call.
 
-# [Critique Task] At the beginning of this new turn, your first step is to perform a critical review.
-# 1. Bring your intermediate analysis back to the original question for a reverse check.
-# 2. Specifically verify that the bar chart’s y-axis scale and each bar’s y-value match the provided image.
-# 3. Confirm that your results align with the problem image; if anything doesn’t match, correct it.
-# 4. Thinking one more step for answering the question.
-# </tool_response>"""
 
 
 
@@ -229,21 +220,14 @@ def string_to_int_mod(string_value, mod_num=20):
 
 def image_input(img_url):
     try:
-        # 直接读取本地文件的二进制内容
         with open(img_url, "rb") as f:
             img_file = f.read()
-        # 用 PIL 打开本地图片
+        #  PIL 
         with Image.open(io.BytesIO(img_file)) as img:
             img_format = img.format
             img_base64 = base64.b64encode(img_file).decode("utf-8")
             image_url = f"data:image/{img_format.lower()};base64,{img_base64}"
             return image_url
-        # img_file = requests.get(img_url).content
-        # with Image.open(io.BytesIO(img_file)) as img:
-        #     img_format = img.format
-        #     img_base64 = base64.b64encode(img_file).decode("utf-8")
-        #     image_url = f"data:image/{img_format.lower()};base64,{img_base64}"
-        #     return image_url
         
     except:
         print('url 图片解析错误，请更换 url')
@@ -350,8 +334,7 @@ class OpenAIModel(LLM):
         self.api_sleep = kwargs.get("api_sleep", 10)
         self.image_detail = kwargs.get("image_detail", "auto")
         self.image_resize = kwargs.get("image_resize", None)
-        #self.your_logid = str(uuid.uuid4())
-        self.your_logid = logid.generate()
+        self.your_logid = str(uuid.uuid4())
 
         self.blackboard = None
         self.provided_tools = blackboard_tools
@@ -366,14 +349,9 @@ class OpenAIModel(LLM):
                 base_url="https://api.anthropic.com/v1/"  # Anthropic's API endpoint
             )
         else:
-            # self.model = openai.OpenAI(
-            #     api_key=os.environ["OPENAI_API_KEY"],
-            #     base_url=os.environ["BASE_URL"]
-            # )
-            self.model = openai.AzureOpenAI(
-                azure_endpoint=os.environ["BASE_URL"],
-                api_version=os.environ["API_VERSION"],
-                api_key=os.environ["OPENAI_API_KEY"]
+            self.model = openai.OpenAI(
+                api_key=os.environ["OPENAI_API_KEY"],
+                base_url=os.environ["BASE_URL"]
             )
 
         print(f"----------currently, using image_detail: {self.image_detail}----------")
@@ -464,25 +442,12 @@ class OpenAIModel(LLM):
             if len(parsed_response["seed_content"]) == 0:
                 parsed_response["seed_content"] = parsed_response['reasoning_content']
             tool_calls = parsed_response["tool_calls"]
-            # if len(tool_calls) > 0:
-            #     parsed_response["seed_content"] = parsed_response["seed_content"].split("\\boxed")[0].strip()
-            #     # Strip \boxed from raw_response if tools are used, to allow critique to drive correction
-            #     if "\\boxed" in parsed_response["raw_response"]:
-            #          parsed_response["raw_response"] = parsed_response["raw_response"].split("\\boxed")[0].strip()
-            # # print('** parsed_response["seed_content"]: ', parsed_response["seed_content"])
-            
-            # # Fix: Ensure seed_content is not None or empty before appending
-            # if not parsed_response["seed_content"]:
-            #      parsed_response["seed_content"] = "Thinking Process..."
-
-            #inputs["messages"].append({"role": "assistant", "content": [{"type": "text", "text": parsed_response["raw_response"]}]})
-            
             if len(parsed_response["seed_content"]) == 0:
                 parsed_response["seed_content"] = parsed_response['reasoning_content']
                 
             tool_calls = parsed_response["tool_calls"]
             if len(tool_calls) > 0:
-                # 保留原截断逻辑，但使用 \\boxed 标记
+                # 保留原截断逻辑，但使用 \\boxed 标记 replace <answer>
                 parsed_response["seed_content"] = parsed_response["seed_content"].split("\\boxed")[0]
             inputs["messages"].append({"role": "assistant", "content": [{"type": "text", "text": parsed_response["seed_content"]}]})   
             
@@ -490,16 +455,6 @@ class OpenAIModel(LLM):
                 tool_tasks = [process_tool_call(tool_call) for tool_call in tool_calls]
                 last_image_url = None
                 for tool_id, tool_task in enumerate(tool_tasks):
-                    # Skip invalid actions (None, empty, or "None" string)
-                    # action_name = tool_task.get('action')
-                    # if not action_name or str(action_name).lower() == 'none':
-                    #     print(f"Skipping invalid tool action: {action_name}")
-                    #     inputs["messages"].append({
-                    #         "role": "user", 
-                    #         "content": f"<tool_response>Error: Invalid tool action '{action_name}'. Please specify a valid tool name (e.g., insert_element).</tool_response>"
-                    #     })
-                    #     continue
-
                     try:
                         if 'save_dir' in data_ori and data_ori['save_dir']:
                             save_base = data_ori['save_dir']
@@ -529,11 +484,9 @@ class OpenAIModel(LLM):
                                 "image_url": {"url": image_url},
                             })
                             
-                            # inputs["messages"].append({"role": "tool", **parsed_response})
                             print('** render success.')
                             inputs["messages"].append({"role": "user", "content": new_content})
                     except:
-                        # inputs["messages"].append({"role": "tool", **parsed_response})
                         inputs["messages"].append({"role": "user", "content": f"<tool_response>Failed to execute the tool call. {tool_task['action']}</tool_response>"})
                 
                 # Perform critique after all tools in the batch are executed
@@ -584,8 +537,8 @@ class OpenAIModel(LLM):
             else:
                 # inputs["messages"].append({"role": "assistant", **parsed_response})
                 break
-            # if len(tool_calls) > 4:
-            #     break
+            if len(tool_calls) > 8:
+                break
         # exit(0)
         # Check for boxed answer in the CLEANED content first, then raw content
         # This allows answers inside tool arguments to be accepted if explicit text is missing
