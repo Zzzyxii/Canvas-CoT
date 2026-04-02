@@ -123,6 +123,8 @@ The most significant performance gain is observed on the CV-Bench subset, where 
 
 On the MM-Vet subset, we observe a notable pathology in the text-only Iterative Reflection baseline, where performance actually **degrades** compared to standard CoT (68.91 → 68.11). This phenomenon aligns with the "hallucination snowballing" effect discussed in Section 1, where purely verbal self-correction introduces noise. In contrast, Canvas-CoT reverses this trend, achieving a score of **69.74** (+1.2%). This demonstrates that the Rendering-Critique loop acts as a hard constraint validator, preventing the semantic drift common in ungrounded reasoning chains.
 
+![SigLip Score of Gemini on VCode benchmark](./assets/siglip_score.png)
+
 ---
 
 ## C. Detailed Related Work
@@ -157,6 +159,8 @@ MathVista is a comprehensive benchmark designed to evaluate mathematical reasoni
 
 To concretize the epistemic advantages of Canvas-of-Thought, we conduct a qualitative analysis of three representative reasoning modes. Each case demonstrates how our framework transcends the limitations of linear text generation by leveraging the structured, mutable, and grounded nature of the DOM substrate.
 
+![Example demonstration of three core capabilities: (a) Precise Editing of Complex SVG, (b) Effective Representation of Spatial, (c) Grounded Reasoning via Canvas.](./assets/case.png)
+
 **Precision in Structural Generation via ID-Addressable Reasoning.**
 In the Image-to-SVG task, our method excels at refining complex architectural geometries after an initial draft. Standard CoT and Iterative Reflection often struggle here, as correcting a local error—such as a roofline's perspective or clock face details—typically requires regenerating the entire code block, increasing the risk of cascading hallucinations and raising token consumption. Canvas-CoT leverages ID-Addressable Reasoning by assigning unique identifiers to semantic components like `<g id="rightHall">` and `<g id="gatehouse">`, effectively creating a discrete memory bank. For instance, when upgrading the `gatehouse` from a rough placeholder to a detailed structure, the Solver Agent executes a targeted `replace_element` operation solely on the `gatehouse` node. Similarly, it applies precise `insert_element` operations to the `rightHall` to correct the 3D roofline strip. This bypasses the "append-only" limitation, enabling direct indexing and editing of specific reasoning states without disturbing the global context.
 
@@ -178,33 +182,120 @@ In the following figures, **"IR"** denotes Iterative Reflection.
 
 #### F.1.1. Final Image Rendered by SVG
 
+*(Legend: ✅ = correct, 🟡 = partial, ❌ = incorrect)*
+
 **MMVET — Case v1_36**
 
-| | Question & Answer | Key Points |
-|---|---|---|
-| | **Q:** What should we add in the third step? **A:** milk | 1. Third step item count: milk, whisk, bowl. 2. Realism of object shape representation. 3. Overall layout fidelity |
+**Q:** What should we add in the third step? **A:** milk
+
+Key Points: 1. Third step item count: milk, whisk, bowl. 2. Realism of object shape representation. 3. Overall layout fidelity.
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
-|---|---|---|---|---|
-| *(v1_36a)* | *(v1_36b)* | *(v1_36c)* | *(v1_36d)* | *(v1_36e)* |
+|:---:|:---:|:---:|:---:|:---:|
+| *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 🟡 | ❌ 🟡 🟡 |
 
 **MMVET — Case v1_184**
 
-| | Question & Answer | Key Points |
-|---|---|---|
-| | **Q:** Can you give a short introduction to this painting? **A:** The Arnolfini Portrait (or other titles) is a 1434 oil painting on oak panel by the Early Netherlandish painter Jan van Eyck. ... The painting was bought by the National Gallery in London in 1842. | 1. Aspect ratio of the image. 2. Fidelity of object shape restoration. 3. Color fidelity. 4. Image detail fidelity. |
+**Q:** Can you give a short introduction to this painting? **A:** The Arnolfini Portrait (or other titles) is a 1434 oil painting on oak panel by the Early Netherlandish painter Jan van Eyck. ... The painting was bought by the National Gallery in London in 1842.
+
+Key Points: 1. Aspect ratio of the image. 2. Fidelity of object shape restoration. 3. Color fidelity. 4. Image detail fidelity.
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
-|---|---|---|---|---|
-| *(v1_184a)* | *(v1_184b)* | *(v1_184c)* | *(v1_184d)* | *(v1_184e)* |
+|:---:|:---:|:---:|:---:|:---:|
+| *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* |
 | ✅ ✅ ✅ ✅ | ✅ ✅ ✅ 🟡 | ✅ 🟡 ✅ 🟡 | ❌ 🟡 ✅ ❌ | ❌ 🟡 ✅ ❌ |
 
-*(Legend: ✅ = correct, 🟡 = partial, ❌ = incorrect)*
+**MMVET — Case v1_23**
+
+**Q:** What is the price for tomatoes? **A:** eight \<OR\> 8.0
+
+Key Points: 1. Whether the tomato is present. 2. Relative positions between the tomato and its price tag. 3. Scene restoration fidelity. 4. Fruit detail restoration accuracy.
+
+| Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
+|:---:|:---:|:---:|:---:|:---:|
+| ![](./assets/v1_23a.png) | ![](./assets/v1_23b.png) | ![](./assets/v1_23c.png) | ![](./assets/v1_23d.png) | ![](./assets/v1_23e.png) |
+| ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 🟡 | ✅ ❌ ✅ 🟡 | ✅ ✅ 🟡 🟡 | ❌ ❌ 🟡 🟡 |
+
+---
+
+**MMMU — Case dev_Physics_5_img1**
+
+**Q:** A battery, an ammeter, three resistors, and a switch are connected to form the simple circuit shown above. When the switch is closed what would happen to the potential difference across the 15 ohm resistor? (A) it would equal the potential difference across the 20 ohm resistor (B) it would be twice the potential difference across the 30 ohm resistor (C) it would equal the potential difference across the 30 ohm resistor (D) it would be half the potential difference across the 30 ohm resistor **A:** (C)
+
+Key Points: 1. Switch S open/closed status. 2. Correct representation of fundamental circuit components. 3. Clear annotation.
+
+| Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
+|:---:|:---:|:---:|:---:|:---:|
+| ![](./assets/dev_Physics_5_img1a.png) | ![](./assets/dev_Physics_5_img1b.png) | ![](./assets/dev_Physics_5_img1c.png) | ![](./assets/dev_Physics_5_img1d.png) | ![](./assets/dev_Physics_5_img1e.png) |
+| ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 ✅ | ✅ 🟡 ✅ | ❌ 🟡 ❌ |
+
+**MMMU — Case dev_Accounting_4_img1**
+
+**Q:** Paper Submarine Manufacturing is investigating a lockbox system to reduce its collection time. It has determined the following: The total collection time will be reduced by three days if the lockbox system is adopted. What is the net cash flow per check from adopting? (A) \$.02 (B) \$7.79 (C) \$8.65 **A:** (A)
+
+Key Points: 1. Text is clear without overlapping. 2. Content is completely identical. 3. Proportional layout is reasonable.
+
+| Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
+|:---:|:---:|:---:|:---:|:---:|
+| ![](./assets/dev_Accounting_4_img1a.png) | ![](./assets/dev_Accounting_4_img1b.png) | ![](./assets/dev_Accounting_4_img1c.png) | ![](./assets/dev_Accounting_4_img1d.png) | ![](./assets/dev_Accounting_4_img1e.png) |
+| ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ ✅ ✅ | ❌ 🟡 🟡 | ✅ ✅ 🟡 |
+
+---
+
+**CV-Bench — Case coco_63**
+
+**Q:** How many clocks are in the image? (A) 2 (B) 1 (C) 0 (D) 3 **A:** B
+
+Key Points: 1. There is a clock on the clock tower. 2. Two guards and two tourists in the square. 3. Right perspective relationship of the building. 4. Windows on the right wall.
+
+| Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
+|:---:|:---:|:---:|:---:|:---:|
+| *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* |
+| ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 ✅ | ✅ ✅ 🟡 ✅ | ✅ ✅ 🟡 🟡 | ✅ ❌ ❌ 🟡 |
+
+**CV-Bench — Case omni3d_hypersim_140**
+
+**Q:** Which object is closer to the desk (highlighted by a red box), the books (highlighted by a blue box) or the shelves (highlighted by a green box)? (A) books (B) shelves **A:** B
+
+Key Points: 1. Three bounding boxes are accurately calibrated. 2. The objects represented by the bounding box annotations are accurate. 3. The spatial orientation of the stairs is correct. 4. Environmental detail representation.
+
+| Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
+|:---:|:---:|:---:|:---:|:---:|
+| *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* |
+| ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 ✅ | ✅ 🟡 🟡 ✅ | ❌ 🟡 🟡 🟡 | ✅ ✅ 🟡 🟡 |
+
+**CV-Bench — Case ade20k_668**
+
+**Q:** Considering the relative positions of the wall (annotated by the red box) and the door in the image provided, where is the wall (annotated by the red box) located with respect to the door? (A) left (B) right **A:** B
+
+Key Points: 1. A bounding box is accurately calibrated. 2. Spatial relationship of the spiral staircase. 3. Scene restoration fidelity.
+
+| Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
+|:---:|:---:|:---:|:---:|:---:|
+| ![](./assets/ade20k_668a.png) | ![](./assets/ade20k_668b.png) | ![](./assets/ade20k_668c.png) | ![](./assets/ade20k_668d.png) | ![](./assets/ade20k_668e.png) |
+| ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 ✅ | ✅ 🟡 🟡 | ✅ 🟡 🟡 |
+
+**CV-Bench — Case omni3d_sunrgbd_109**
+
+**Q:** Which object is closer to the camera taking this photo, the night stand (highlighted by a red box) or the chair (highlighted by a blue box)? (A) night stand (B) chair **A:** A
+
+Key Points: 1. Two bounding boxes are accurately shown. 2. The objects represented by the bounding box annotations are accurate. 3. Right perspective relationship of the bed frame. 4. Environmental detail representation.
+
+| Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
+|:---:|:---:|:---:|:---:|:---:|
+| *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* | *(image not available)* |
+| ✅ ✅ ✅ ✅ | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 🟡 | ❌ 🟡 ❌ 🟡 | ✅ ✅ 🟡 🟡 |
 
 #### F.1.2. CRUD-Action Trajectory of Canvas-CoT
 
-The figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart Correction" task. The agent begins by identifying layout and styling discrepancies, utilizing `insert_element` to externalize its reasoning onto the canvas. Guided by this analysis, the agent then performs a `replace_element` operation to modify the target SVG node in-place, specifically recalculating bar coordinates and styling attributes. Finally, the agent employs `remove_element` to delete the auxiliary reasoning nodes from the canvas.
+Figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart Correction" task. The agent begins by identifying layout and styling discrepancies, utilizing `insert_element` to externalize its reasoning onto the canvas. Guided by this analysis, the agent then performs a `replace_element` operation to modify the target SVG node in-place, specifically recalculating bar coordinates and styling attributes. Finally, the agent employs `remove_element` to delete the auxiliary reasoning nodes from the canvas.
+
+**Image evolution with CRUD-Action Trajectory:**
+
+| (a) Original Image | (b) Initial SVG | (c) After Round-1 | (d) After Round-2 | (e) Final SVG |
+|:---:|:---:|:---:|:---:|:---:|
+| ![](./assets/logcase_a.png) | ![](./assets/logcase_b.png) | ![](./assets/logcase_c.png) | ![](./assets/logcase_d.png) | ![](./assets/logcase_e.png) |
 
 **Task: Image-to-SVG and Chart Information Recognition**
 
@@ -214,13 +305,13 @@ The figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart C
 |---|---|
 | **Solver** | **[Round 1: Externalizing Analysis via `insert_element`]** *Input: System Prompt + User Prompt + Initial SVG Code + Original Image + Image Rendered by Initial SVG* `<think>` The user wants me to correct an SVG image to match an original image. Issues identified: (1) **Layout and Sizing**: Elements extend beyond the `viewBox` of `0 0 300 600`. (2) **Proportions**: Absolute positions, widths, and spacing do not match the compact and centered layout. (3) **Color**: Current fill is `#b030b0` (purple), but original uses `#a629a6`. (4) **Shape**: Bars in original have slightly rounded corners; current SVG rects are sharp-cornered. (5) **Text Positioning**: Costs and labels are misplaced due to underlying layout errors. `</think>` |
 | | `<tool_call>{"name":"insert_element", "arguments":{"rootId":"root", "fragment":"<div id='analysis'>... (issues 1-5) ...</div>"}}</tool_call>` |
-| **Critique** | *Current State: Round 1 render.* `<tool_response>` [Action Result] The second image is the result of `tool_call insert_element`. ...(Critique Prompt) `</tool_response>` |
+| **Critique** | *Current State: (c) above.* `<tool_response>` [Action Result] The second image is the result of `tool_call insert_element`. ...(Critique Prompt) `</tool_response>` |
 | **Solver** | **[Round 2: Update via `replace_element`]** `<think>` I have already calculated the new layout parameters: ViewBox `0 0 300 600`, Bar Width `70px`, Spacing `25px`, Horizontal Margin `20px`. Bar X-coordinates: `20`, `115`, `210`, with proportional heights (`450px`, `284px`, `243px`) bottom-aligned at y=470. `</think>` |
 | | `<tool_call>{"name":"replace_element", "arguments":{"targetId":"main_svg", "fragment":"<svg id=\"main_svg\" viewBox=\"0 0 300 600\"><rect id=\"bar1\" fill=\"#a629a6\" height=\"450\" width=\"70\" x=\"20\" y=\"20\" rx=\"4\" ry=\"4\"/>...<text id=\"cost1\" ...>$130.96</text>...</svg>"}}</tool_call>` |
-| **Critique** | *Current State: Round 2 render.* `<tool_response>` [Action Result] The second image is the result of `tool_call replace_element`. ...(Critique Prompt) `</tool_response>` |
+| **Critique** | *Current State: (d) above.* `<tool_response>` [Action Result] The second image is the result of `tool_call replace_element`. ...(Critique Prompt) `</tool_response>` |
 | **Solver** | **[Round 3: Remove Redundant Content via `remove_element`]** `<think>` The correction is verified. The SVG on the notebook now accurately represents the original image. I will now remove the analysis node. `</think>` |
 | | `<tool_call>{"name":"remove_element", "arguments":{"targetId":"analysis"}}</tool_call>` |
-| **Critique** | *Final State: final render.* `<tool_response>` [Action Result] The second image is the result of `tool_call remove_element`. ...(Critique Prompt) `</tool_response>` |
+| **Critique** | *Final State: (e) above.* `<tool_response>` [Action Result] The second image is the result of `tool_call remove_element`. ...(Critique Prompt) `</tool_response>` |
 | **Final Ans.** | `<answer><svg id="main_svg" viewBox="0 0 300 600" ...><rect id="bar1" fill="#a629a6" height="450" width="70" x="20" y="20" rx="4" ry="4"></rect>...(Final SVG Code)</svg></answer>` |
 
 ### F.2. RBench-V Cases
@@ -235,14 +326,16 @@ The figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart C
 | **User** | *Question* |
 | **Solver** | **[Round 1]** Here is a step-by-step derivation to find the measure of angle ∠BDC. I'll visualize the geometric setup described in the problem. `<tool_call>{"name":"insert_element", "arguments":{"rootId":"root", "fragment":"<div id=\"step1\"...><strong>Problem Setup</strong>...</div>","beforeId":null}}</tool_call>` *(Note: The agent internally generates a diagram where the extension line incorrectly starts from vertex A.)* |
 | **Critique** | ⚠️ **[WARNING] CRITIQUE TRIGGERED: Visual-Textual Inconsistency** — **Hallucination Detect:** `True`. **Issue:** The problem and textual solution correctly state the exterior angle is formed by extending side BC. However, the diagram in "Problem Setup" visually depicts the extension of side AC. The mathematical derivation correctly follows extending BC, but the visual aid is wrong. |
-| **Solver** | **[Self-Correction]** "The diagram incorrectly shows a dashed line originating from vertex A." `replace_element(targetId="step1", ...)` *(Visual correction: before critique shows incorrect extension from A; after correction shows correct extension from B.)* |
+| **Solver** | **[Self-Correction]** "The diagram incorrectly shows a dashed line originating from vertex A." `replace_element(targetId="step1", ...)` |
+| | **Before Critique** (incorrect extension from A) → **After Correction** (correct extension from B): |
+| | ![Before](./assets/critique_case1_a.png) → ![After](./assets/critique_case1_b.png) |
 | **Solver** | **[Final Derivation]** With the corrected setup: (1) Angle sum of △BDC = 180°. (2) Derived ∠BDC = ∠A / 2. **Calculation:** ∠BDC = 27° / 2 = **13.5°**. `<answer>13.5°</answer>` |
 
 > The Canvas-CoT agent initially hallucinates the geometric construction (extending the wrong side). The Critique Agent identifies the mismatch between the correct textual logic and the incorrect visual rendering. The agent then executes an atomic CRUD update to fix the canvas before deriving the final answer.
 
 #### Case 2: Visual Reasoning & Geometry Counting
 
-**Task:** In the figure shown, there are a total of ( ) triangles. Solve the question according to the given picture step-by-step.
+**Task:** In the figure shown (![](./assets/count167_origin.png)), there are a total of ( ) triangles. Solve the question according to the given picture step-by-step.
 
 | Role | Trajectory Step |
 |---|---|
@@ -250,7 +343,9 @@ The figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart C
 | **User** | *Question + Original Input Image* |
 | **Solver** | **[Round 1]** I will analyze the triangle structure and count them. `<tool_call>{"name":"insert_element", "arguments":{"fragment":"<svg id='fig1'>...<line x2='140'/><line x2='260'/>...</svg>"}}</tool_call>` *(Note: The agent generates a diagram with only **2** internal lines instead of 3, leading to an incorrect total count of 6.)* |
 | **Critique** | ⚠️ **[WARNING] CRITIQUE: Fundamental Visual Error** — **Hallucination Detect:** `True`. The original image has **3 internal lines**, dividing the base into 5 points. The notebook shows only **2 lines**. This misrepresentation makes the subsequent count (6) incorrect. The correct count should be C(5,2) = 10. |
-| **Solver** | **[Self-Correction]** Clearing the canvas to redraw the correct structure with 5 points on the base (B, C, D, E, F). `clear()`; `insert_element(fragment="<svg id='fig_correct'>...</svg>")` *(Before: initial hallucination with 2 lines. After: corrected canvas with 3 lines.)* |
+| **Solver** | **[Self-Correction]** Clearing the canvas to redraw the correct structure with 5 points on the base (B, C, D, E, F). `clear()`; `insert_element(fragment="<svg id='fig_correct'>...</svg>")` |
+| | **Before** (initial hallucination, 2 lines) → **After** (corrected canvas, 3 lines): |
+| | ![Before](./assets/count167_hallucination.png) → ![After](./assets/count167_corrected.png) |
 | **Critique** | ⚠️ **[WARNING] CRITIQUE: Geometric Inconsistency** — The notebook draws a symmetric triangle, but the original image shows a skewed triangle with an altitude marked by a right-angle symbol. Refinement: while the count is unaffected, visual fidelity should be improved. |
 | **Solver** | **[Final Logic]** Any two points on the base connected to the apex A form a triangle. **Combinatorial Calculation:** C(5, 2) = (5 × 4) / (2 × 1) = **10**. `<answer>10</answer>` |
 
