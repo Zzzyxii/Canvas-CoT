@@ -6,9 +6,6 @@
 
 <div align="center" style="line-height: 1;">
 
-[![arXiv](https://img.shields.io/badge/arXiv-2602.xxxxx-b31b1b?style=for-the-badge)]()
-[![GITHUB](https://img.shields.io/badge/Github-24292F?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zzzyxii/Canvas-CoT)
-
 </div>
 
 # Introduction
@@ -192,7 +189,7 @@ Key Points: 1. Third step item count: milk, whisk, bowl. 2. Realism of object sh
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/v1_36a.jpg" width="18%"> | <img src="./assets/v1_36b.jpg" width="18%"> | <img src="./assets/v1_36c.jpg" width="18%"> | <img src="./assets/v1_36d.jpg" width="18%"> | <img src="./assets/v1_36e.jpg" width="18%"> |
+| <img src="./assets/v1_36a.jpg" width="100%"> | <img src="./assets/v1_36b.jpg" width="100%"> | <img src="./assets/v1_36c.jpg" width="100%"> | <img src="./assets/v1_36d.jpg" width="100%"> | <img src="./assets/v1_36e.jpg" width="100%"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 🟡 | ❌ 🟡 🟡 |
 
 **MMVET — Case v1_184**
@@ -203,7 +200,7 @@ Key Points: 1. Aspect ratio of the image. 2. Fidelity of object shape restoratio
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/v1_184a.jpg" width="18%"> | <img src="./assets/v1_184b.jpg" width="18%"> | <img src="./assets/v1_184c.jpg" width="18%"> | <img src="./assets/v1_184d.jpg" width="18%"> | <img src="./assets/v1_184e.jpg" width="18%"> |
+| <img src="./assets/v1_184a.jpg" width="100%"> | <img src="./assets/v1_184b.jpg" width="100%"> | <img src="./assets/v1_184c.jpg" width="100%"> | <img src="./assets/v1_184d.jpg" width="100%"> | <img src="./assets/v1_184e.jpg" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ ✅ 🟡 | ✅ 🟡 ✅ 🟡 | ❌ 🟡 ✅ ❌ | ❌ 🟡 ✅ ❌ |
 
 **MMVET — Case v1_23**
@@ -214,7 +211,7 @@ Key Points: 1. Whether the tomato is present. 2. Relative positions between the 
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/v1_23a.png" width="18%"> | <img src="./assets/v1_23b.png" width="18%"> | <img src="./assets/v1_23c.png" width="18%"> | <img src="./assets/v1_23d.png" width="18%"> | <img src="./assets/v1_23e.png" width="18%"> |
+| <img src="./assets/v1_23a.png" width="100%"> | <img src="./assets/v1_23b.png" width="100%"> | <img src="./assets/v1_23c.png" width="100%"> | <img src="./assets/v1_23d.png" width="100%"> | <img src="./assets/v1_23e.png" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 🟡 | ✅ ❌ ✅ 🟡 | ✅ ✅ 🟡 🟡 | ❌ ❌ 🟡 🟡 |
 
 ---
@@ -227,7 +224,7 @@ Key Points: 1. Switch S open/closed status. 2. Correct representation of fundame
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/dev_Physics_5_img1a.png" width="18%"> | <img src="./assets/dev_Physics_5_img1b.png" width="18%"> | <img src="./assets/dev_Physics_5_img1c.png" width="18%"> | <img src="./assets/dev_Physics_5_img1d.png" width="18%"> | <img src="./assets/dev_Physics_5_img1e.png" width="18%"> |
+| <img src="./assets/dev_Physics_5_img1a.png" width="100%"> | <img src="./assets/dev_Physics_5_img1b.png" width="100%"> | <img src="./assets/dev_Physics_5_img1c.png" width="100%"> | <img src="./assets/dev_Physics_5_img1d.png" width="100%"> | <img src="./assets/dev_Physics_5_img1e.png" width="100%"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 ✅ | ✅ 🟡 ✅ | ❌ 🟡 ❌ |
 
 **MMMU — Case dev_Accounting_4_img1**
@@ -238,7 +235,7 @@ Key Points: 1. Text is clear without overlapping. 2. Content is completely ident
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/dev_Accounting_4_img1a.png" width="18%"> | <img src="./assets/dev_Accounting_4_img1b.png" width="18%"> | <img src="./assets/dev_Accounting_4_img1c.png" width="18%"> | <img src="./assets/dev_Accounting_4_img1d.png" width="18%"> | <img src="./assets/dev_Accounting_4_img1e.png" width="18%"> |
+| <img src="./assets/dev_Accounting_4_img1a.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1b.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1c.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1d.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1e.png" width="100%"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ ✅ ✅ | ❌ 🟡 🟡 | ✅ ✅ 🟡 |
 
 ---
@@ -251,7 +248,7 @@ Key Points: 1. There is a clock on the clock tower. 2. Two guards and two touris
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/coco_63a.png" width="18%"> | <img src="./assets/coco_63b.png" width="18%"> | <img src="./assets/coco_63c.png" width="18%"> | <img src="./assets/coco_63d.png" width="18%"> | <img src="./assets/coco_63e.png" width="18%"> |
+| <img src="./assets/coco_63a.png" width="100%"> | <img src="./assets/coco_63b.png" width="100%"> | <img src="./assets/coco_63c.png" width="100%"> | <img src="./assets/coco_63d.png" width="100%"> | <img src="./assets/coco_63e.png" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 ✅ | ✅ ✅ 🟡 ✅ | ✅ ✅ 🟡 🟡 | ✅ ❌ ❌ 🟡 |
 
 **CV-Bench — Case omni3d_hypersim_140**
@@ -262,7 +259,7 @@ Key Points: 1. Three bounding boxes are accurately calibrated. 2. The objects re
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/omni3d_hypersim_140a.jpg" width="18%"> | <img src="./assets/omni3d_hypersim_140b.jpg" width="18%"> | <img src="./assets/omni3d_hypersim_140c.jpg" width="18%"> | <img src="./assets/omni3d_hypersim_140d.jpg" width="18%"> | <img src="./assets/omni3d_hypersim_140e.jpg" width="18%"> |
+| <img src="./assets/omni3d_hypersim_140a.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140b.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140c.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140d.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140e.jpg" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 ✅ | ✅ 🟡 🟡 ✅ | ❌ 🟡 🟡 🟡 | ✅ ✅ 🟡 🟡 |
 
 **CV-Bench — Case ade20k_668**
@@ -273,7 +270,7 @@ Key Points: 1. A bounding box is accurately calibrated. 2. Spatial relationship 
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/ade20k_668a.png" width="18%"> | <img src="./assets/ade20k_668b.png" width="18%"> | <img src="./assets/ade20k_668c.png" width="18%"> | <img src="./assets/ade20k_668d.png" width="18%"> | <img src="./assets/ade20k_668e.png" width="18%"> |
+| <img src="./assets/ade20k_668a.png" width="100%"> | <img src="./assets/ade20k_668b.png" width="100%"> | <img src="./assets/ade20k_668c.png" width="100%"> | <img src="./assets/ade20k_668d.png" width="100%"> | <img src="./assets/ade20k_668e.png" width="100%"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 ✅ | ✅ 🟡 🟡 | ✅ 🟡 🟡 |
 
 **CV-Bench — Case omni3d_sunrgbd_109**
@@ -284,7 +281,7 @@ Key Points: 1. Two bounding boxes are accurately shown. 2. The objects represent
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/omni3d_sunrgbd_109a.jpg" width="18%"> | <img src="./assets/omni3d_sunrgbd_109b.jpg" width="18%"> | <img src="./assets/omni3d_sunrgbd_109c.jpg" width="18%"> | <img src="./assets/omni3d_sunrgbd_109d.jpg" width="18%"> | <img src="./assets/omni3d_sunrgbd_109e.jpg" width="18%"> |
+| <img src="./assets/omni3d_sunrgbd_109a.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109b.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109c.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109d.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109e.jpg" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 🟡 | ❌ 🟡 ❌ 🟡 | ✅ ✅ 🟡 🟡 |
 
 #### F.1.2. CRUD-Action Trajectory of Canvas-CoT
@@ -295,7 +292,7 @@ Figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart Corre
 
 | (a) Original Image | (b) Initial SVG | (c) After Round-1 | (d) After Round-2 | (e) Final SVG |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/logcase_a.png" width="18%"> | <img src="./assets/logcase_b.png" width="18%"> | <img src="./assets/logcase_c.png" width="18%"> | <img src="./assets/logcase_d.png" width="18%"> | <img src="./assets/logcase_e.png" width="18%"> |
+| <img src="./assets/logcase_a.png" width="100%"> | <img src="./assets/logcase_b.png" width="100%"> | <img src="./assets/logcase_c.png" width="100%"> | <img src="./assets/logcase_d.png" width="100%"> | <img src="./assets/logcase_e.png" width="100%"> |
 
 **Task: Image-to-SVG and Chart Information Recognition**
 
