@@ -1,6 +1,6 @@
 <div align="center">
   <picture>
-      <img src="./assets/logo_caption.png" width="100%">
+      <img src="./assets/logo_caption.png?raw=1" width="100%">
   </picture>
 </div>
 
@@ -14,7 +14,7 @@ This repository contains the core implementation of a **Visual-Reasoning Agent**
 
 <div align="center">
   <picture>
-      <img src="./assets/overview.png" width="90%">
+      <img src="./assets/overview.png?raw=1" width="90%">
   </picture>
 </div>
 
@@ -52,21 +52,21 @@ We evaluated the **Canvas-of-thought** method against several baseline reasoning
 
 <div align="center">
   <p><b>1. Performance on VCode</b></p>
-  <img src="./assets/table1.png" width="100%">
+  <img src="./assets/table1.png?raw=1" width="100%">
 </div>
 
 <br>
 
 <div align="center">
   <p><b>2. Performance on RBench-V</b></p>
-  <img src="./assets/table2.png" width="100%">
+  <img src="./assets/table2.png?raw=1" width="100%">
 </div>
 
 <br>
 
 <div align="center">
   <p><b>3. Performance on MathVista</b></p>
-  <img src="./assets/table3.png" width="100%">
+  <img src="./assets/table3.png?raw=1" width="100%">
 </div>
 
 ---
@@ -189,7 +189,7 @@ Key Points: 1. Third step item count: milk, whisk, bowl. 2. Realism of object sh
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/v1_36a.jpg" width="100%"> | <img src="./assets/v1_36b.jpg" width="100%"> | <img src="./assets/v1_36c.jpg" width="100%"> | <img src="./assets/v1_36d.jpg" width="100%"> | <img src="./assets/v1_36e.jpg" width="100%"> |
+| <img src="./assets/v1_36a.jpg?raw=1" width="100%"> | <img src="./assets/v1_36b.jpg?raw=1" width="100%"> | <img src="./assets/v1_36c.jpg?raw=1" width="100%"> | <img src="./assets/v1_36d.jpg?raw=1" width="100%"> | <img src="./assets/v1_36e.jpg?raw=1" width="100%"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 🟡 | ❌ 🟡 🟡 |
 
 **MMVET — Case v1_184**
@@ -200,7 +200,7 @@ Key Points: 1. Aspect ratio of the image. 2. Fidelity of object shape restoratio
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/v1_184a.jpg" width="100%"> | <img src="./assets/v1_184b.jpg" width="100%"> | <img src="./assets/v1_184c.jpg" width="100%"> | <img src="./assets/v1_184d.jpg" width="100%"> | <img src="./assets/v1_184e.jpg" width="100%"> |
+| <img src="./assets/v1_184a.jpg?raw=1" width="100%"> | <img src="./assets/v1_184b.jpg?raw=1" width="100%"> | <img src="./assets/v1_184c.jpg?raw=1" width="100%"> | <img src="./assets/v1_184d.jpg?raw=1" width="100%"> | <img src="./assets/v1_184e.jpg?raw=1" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ ✅ 🟡 | ✅ 🟡 ✅ 🟡 | ❌ 🟡 ✅ ❌ | ❌ 🟡 ✅ ❌ |
 
 **MMVET — Case v1_23**
@@ -211,7 +211,7 @@ Key Points: 1. Whether the tomato is present. 2. Relative positions between the 
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/v1_23a.png" width="100%"> | <img src="./assets/v1_23b.png" width="100%"> | <img src="./assets/v1_23c.png" width="100%"> | <img src="./assets/v1_23d.png" width="100%"> | <img src="./assets/v1_23e.png" width="100%"> |
+| <img src="./assets/v1_23a.png?raw=1" width="100%"> | <img src="./assets/v1_23b.png?raw=1" width="100%"> | <img src="./assets/v1_23c.png?raw=1" width="100%"> | <img src="./assets/v1_23d.png?raw=1" width="100%"> | <img src="./assets/v1_23e.png?raw=1" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 🟡 | ✅ ❌ ✅ 🟡 | ✅ ✅ 🟡 🟡 | ❌ ❌ 🟡 🟡 |
 
 ---
@@ -224,7 +224,7 @@ Key Points: 1. Switch S open/closed status. 2. Correct representation of fundame
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/dev_Physics_5_img1a.png" width="100%"> | <img src="./assets/dev_Physics_5_img1b.png" width="100%"> | <img src="./assets/dev_Physics_5_img1c.png" width="100%"> | <img src="./assets/dev_Physics_5_img1d.png" width="100%"> | <img src="./assets/dev_Physics_5_img1e.png" width="100%"> |
+| <img src="./assets/dev_Physics_5_img1a.png?raw=1" width="100%"> | <img src="./assets/dev_Physics_5_img1b.png?raw=1" width="100%"> | <img src="./assets/dev_Physics_5_img1c.png?raw=1" width="100%"> | <img src="./assets/dev_Physics_5_img1d.png?raw=1" width="100%"> | <img src="./assets/dev_Physics_5_img1e.png?raw=1" width="100%"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 ✅ | ✅ 🟡 ✅ | ❌ 🟡 ❌ |
 
 **MMMU — Case dev_Accounting_4_img1**
@@ -235,7 +235,7 @@ Key Points: 1. Text is clear without overlapping. 2. Content is completely ident
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/dev_Accounting_4_img1a.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1b.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1c.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1d.png" width="100%"> | <img src="./assets/dev_Accounting_4_img1e.png" width="100%"> |
+| <img src="./assets/dev_Accounting_4_img1a.png?raw=1" width="100%"> | <img src="./assets/dev_Accounting_4_img1b.png?raw=1" width="100%"> | <img src="./assets/dev_Accounting_4_img1c.png?raw=1" width="100%"> | <img src="./assets/dev_Accounting_4_img1d.png?raw=1" width="100%"> | <img src="./assets/dev_Accounting_4_img1e.png?raw=1" width="100%"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ ✅ ✅ | ❌ 🟡 🟡 | ✅ ✅ 🟡 |
 
 ---
@@ -248,7 +248,7 @@ Key Points: 1. There is a clock on the clock tower. 2. Two guards and two touris
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/coco_63a.png" width="100%"> | <img src="./assets/coco_63b.png" width="100%"> | <img src="./assets/coco_63c.png" width="100%"> | <img src="./assets/coco_63d.png" width="100%"> | <img src="./assets/coco_63e.png" width="100%"> |
+| <img src="./assets/coco_63a.png?raw=1" width="100%"> | <img src="./assets/coco_63b.png?raw=1" width="100%"> | <img src="./assets/coco_63c.png?raw=1" width="100%"> | <img src="./assets/coco_63d.png?raw=1" width="100%"> | <img src="./assets/coco_63e.png?raw=1" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 ✅ | ✅ ✅ 🟡 ✅ | ✅ ✅ 🟡 🟡 | ✅ ❌ ❌ 🟡 |
 
 **CV-Bench — Case omni3d_hypersim_140**
@@ -259,7 +259,7 @@ Key Points: 1. Three bounding boxes are accurately calibrated. 2. The objects re
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/omni3d_hypersim_140a.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140b.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140c.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140d.jpg" width="100%"> | <img src="./assets/omni3d_hypersim_140e.jpg" width="100%"> |
+| <img src="./assets/omni3d_hypersim_140a.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_hypersim_140b.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_hypersim_140c.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_hypersim_140d.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_hypersim_140e.jpg?raw=1" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 ✅ | ✅ 🟡 🟡 ✅ | ❌ 🟡 🟡 🟡 | ✅ ✅ 🟡 🟡 |
 
 **CV-Bench — Case ade20k_668**
@@ -270,7 +270,7 @@ Key Points: 1. A bounding box is accurately calibrated. 2. Spatial relationship 
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/ade20k_668a.png" width="924" height="1056"> | <img src="./assets/ade20k_668b.png" width="924" height="1056"> | <img src="./assets/ade20k_668c.png" width="924" height="1056"> | <img src="./assets/ade20k_668d.png" width="924" height="1056"> | <img src="./assets/ade20k_668e.png" width="924" height="1056"> |
+| <img src="./assets/ade20k_668a.png?raw=1" width="924" height="1056"> | <img src="./assets/ade20k_668b.png?raw=1" width="924" height="1056"> | <img src="./assets/ade20k_668c.png?raw=1" width="924" height="1056"> | <img src="./assets/ade20k_668d.png?raw=1" width="924" height="1056"> | <img src="./assets/ade20k_668e.png?raw=1" width="924" height="1056"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 ✅ | ✅ 🟡 🟡 | ✅ 🟡 🟡 |
 
 **CV-Bench — Case omni3d_sunrgbd_109**
@@ -281,7 +281,7 @@ Key Points: 1. Two bounding boxes are accurately shown. 2. The objects represent
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/omni3d_sunrgbd_109a.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109b.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109c.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109d.jpg" width="100%"> | <img src="./assets/omni3d_sunrgbd_109e.jpg" width="100%"> |
+| <img src="./assets/omni3d_sunrgbd_109a.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_sunrgbd_109b.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_sunrgbd_109c.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_sunrgbd_109d.jpg?raw=1" width="100%"> | <img src="./assets/omni3d_sunrgbd_109e.jpg?raw=1" width="100%"> |
 | ✅ ✅ ✅ ✅ | ✅ ✅ ✅ ✅ | ✅ ✅ 🟡 🟡 | ❌ 🟡 ❌ 🟡 | ✅ ✅ 🟡 🟡 |
 
 #### F.1.2. CRUD-Action Trajectory of Canvas-CoT
@@ -292,7 +292,7 @@ Figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart Corre
 
 | (a) Original Image | (b) Initial SVG | (c) After Round-1 | (d) After Round-2 | (e) Final SVG |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/logcase_a.png" width="100%"> | <img src="./assets/logcase_b.png" width="100%"> | <img src="./assets/logcase_c.png" width="100%"> | <img src="./assets/logcase_d.png" width="100%"> | <img src="./assets/logcase_e.png" width="100%"> |
+| <img src="./assets/logcase_a.png?raw=1" width="100%"> | <img src="./assets/logcase_b.png?raw=1" width="100%"> | <img src="./assets/logcase_c.png?raw=1" width="100%"> | <img src="./assets/logcase_d.png?raw=1" width="100%"> | <img src="./assets/logcase_e.png?raw=1" width="100%"> |
 
 **Task: Image-to-SVG and Chart Information Recognition**
 
@@ -325,7 +325,7 @@ Figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart Corre
 | **Critique** | ⚠️ **[WARNING] CRITIQUE TRIGGERED: Visual-Textual Inconsistency** — **Hallucination Detect:** `True`. **Issue:** The problem and textual solution correctly state the exterior angle is formed by extending side BC. However, the diagram in "Problem Setup" visually depicts the extension of side AC. The mathematical derivation correctly follows extending BC, but the visual aid is wrong. |
 | **Solver** | **[Self-Correction]** "The diagram incorrectly shows a dashed line originating from vertex A." `replace_element(targetId="step1", ...)` |
 | | **Before Critique** (incorrect extension from A) → **After Correction** (correct extension from B): |
-| | <table><tr><td align="center"><img src="./assets/critique_case1_a.png" width="280"/><br/><b>Before Critique</b> (incorrect extension from A)</td><td align="center"><img src="./assets/critique_case1_b.png" width="280"/><br/><b>After Correction</b> (correct extension from B)</td></tr></table> |
+| | <table><tr><td align="center"><img src="./assets/critique_case1_a.png?raw=1" width="280"/><br/><b>Before Critique</b> (incorrect extension from A)</td><td align="center"><img src="./assets/critique_case1_b.png?raw=1" width="280"/><br/><b>After Correction</b> (correct extension from B)</td></tr></table> |
 | **Solver** | **[Final Derivation]** With the corrected setup: (1) Angle sum of △BDC = 180°. (2) Derived ∠BDC = ∠A / 2. **Calculation:** ∠BDC = 27° / 2 = **13.5°**. `<answer>13.5°</answer>` |
 
 > The Canvas-CoT agent initially hallucinates the geometric construction (extending the wrong side). The Critique Agent identifies the mismatch between the correct textual logic and the incorrect visual rendering. The agent then executes an atomic CRUD update to fix the canvas before deriving the final answer.
@@ -342,7 +342,7 @@ Figure below illustrates the execution flow of Canvas-CoT via a "Bar Chart Corre
 | **Critique** | ⚠️ **[WARNING] CRITIQUE: Fundamental Visual Error** — **Hallucination Detect:** `True`. The original image has **3 internal lines**, dividing the base into 5 points. The notebook shows only **2 lines**. This misrepresentation makes the subsequent count (6) incorrect. The correct count should be C(5,2) = 10. |
 | **Solver** | **[Self-Correction]** Clearing the canvas to redraw the correct structure with 5 points on the base (B, C, D, E, F). `clear()`; `insert_element(fragment="<svg id='fig_correct'>...</svg>")` |
 | | **Before** (initial hallucination, 2 lines) → **After** (corrected canvas, 3 lines): |
-| | <table><tr><td align="center"><img src="./assets/count167_hallucination.png" width="280"/><br/><b>Before</b> (initial hallucination, 2 lines)</td><td align="center"><img src="./assets/count167_corrected.png" width="280"/><br/><b>After</b> (corrected canvas, 3 lines)</td></tr></table> |
+| | <table><tr><td align="center"><img src="./assets/count167_hallucination.png?raw=1" width="280"/><br/><b>Before</b> (initial hallucination, 2 lines)</td><td align="center"><img src="./assets/count167_corrected.png?raw=1" width="280"/><br/><b>After</b> (corrected canvas, 3 lines)</td></tr></table> |
 | **Critique** | ⚠️ **[WARNING] CRITIQUE: Geometric Inconsistency** — The notebook draws a symmetric triangle, but the original image shows a skewed triangle with an altitude marked by a right-angle symbol. Refinement: while the count is unaffected, visual fidelity should be improved. |
 | **Solver** | **[Final Logic]** Any two points on the base connected to the apex A form a triangle. **Combinatorial Calculation:** C(5, 2) = (5 × 4) / (2 × 1) = **10**. `<answer>10</answer>` |
 
