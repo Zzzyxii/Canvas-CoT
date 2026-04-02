@@ -270,7 +270,7 @@ Key Points: 1. A bounding box is accurately calibrated. 2. Spatial relationship 
 
 | Original Image | Gemini-2.5-pro (ours) | GPT-5 (ours) | Gemini-2.5-pro (IR) | GPT-5 (IR) |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./assets/ade20k_668a.png" width="100%"> | <img src="./assets/ade20k_668b.png" width="100%"> | <img src="./assets/ade20k_668c.png" width="100%"> | <img src="./assets/ade20k_668d.png" width="100%"> | <img src="./assets/ade20k_668e.png" width="100%"> |
+| <img src="./assets/ade20k_668a.png" width="924" height="1056"> | <img src="./assets/ade20k_668b.png" width="924" height="1056"> | <img src="./assets/ade20k_668c.png" width="924" height="1056"> | <img src="./assets/ade20k_668d.png" width="924" height="1056"> | <img src="./assets/ade20k_668e.png" width="924" height="1056"> |
 | ✅ ✅ ✅ | ✅ ✅ ✅ | ✅ 🟡 ✅ | ✅ 🟡 🟡 | ✅ 🟡 🟡 |
 
 **CV-Bench — Case omni3d_sunrgbd_109**
